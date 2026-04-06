@@ -1,15 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { productsReducer } from "./features/products/reducer";
-import { createLogger } from "redux-logger";
-
-let middlewares = [];
-
-if(process.env.NODE_ENV === 'development'){
-    const reduxLogger = createLogger({
-        collapsed: true
-    });
-    middlewares.push(reduxLogger);
-}
+import { getReduxMiddlewares } from "./middlewares";
 
 const rootReducer = combineReducers({
     product: productsReducer
@@ -17,7 +8,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(...middlewares)
+    applyMiddleware(...getReduxMiddlewares())
 );
 
 export default store;
