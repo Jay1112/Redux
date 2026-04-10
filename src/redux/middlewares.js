@@ -1,4 +1,5 @@
 import { createLogger } from "redux-logger";
+import { thunk } from "redux-thunk";
 
 export function getReduxMiddlewares(){
     let middlewares = [];
@@ -9,6 +10,7 @@ export function getReduxMiddlewares(){
         });
         middlewares.push(reduxLogger);
     }
+    middlewares.push(thunk);
 
     return middlewares;
 }

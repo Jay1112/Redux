@@ -1,17 +1,14 @@
-import { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { productsFetched } from "./redux/features/products/actions";
+import { Route, Routes } from "react-router-dom"
+import HomePage from "./pages/home-page"
+import CartPage from "./pages/cart-page"
 
 function App() {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(productsFetched([2,3,4,5,9]));
-  },[])
   return (
-    <>
-      <h1>Redux</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage/>} />
+      <Route path="/cart" element={<CartPage/>} />
+    </Routes>
   )
 }
 

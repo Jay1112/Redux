@@ -2,8 +2,9 @@ import { ProductActions } from "./constants";
 
 const initialState = {
     loading: false,
-    products : [],
-    error: null
+    productList : [],
+    error: null,
+    page: 1
 }
 
 export function productsReducer(state = initialState, action){
@@ -18,7 +19,7 @@ export function productsReducer(state = initialState, action){
         case ProductActions.PRODUCTS_FETCHED: {
             return {
                 ...state,
-                products: action.payload
+                productList: action.payload
             }
         }
 
@@ -26,6 +27,13 @@ export function productsReducer(state = initialState, action){
             return {
                 ...state,
                 error: action.payload
+            }
+        }
+
+        case ProductActions.SET_PAGE: {
+            return {
+                ...state,
+                page: action.payload
             }
         }
 
